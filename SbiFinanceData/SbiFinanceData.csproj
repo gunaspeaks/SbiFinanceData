@@ -182,6 +182,7 @@
     <None Include="Docs\Payments Tracker.xlsx" />
     <None Include="Docs\Performance Tracker.xlsx" />
     <None Include="Docs\Sbi Finance Data.lnk" />
+    <None Include="Docs\SbiData.bak" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
