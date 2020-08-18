@@ -175,6 +175,13 @@
     <EmbeddedResource Include="SellOrdersForm.resx">
       <DependentUpon>SellOrdersForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Docs\Accounts Personal.xlsx" />
+    <None Include="Docs\Architects Goals 2019-Guna%2810231%29.xlsx" />
+    <None Include="Docs\Investors Learning.pdf" />
+    <None Include="Docs\Maintenance.xlsx" />
+    <None Include="Docs\Payments Tracker.xlsx" />
+    <None Include="Docs\Performance Tracker.xlsx" />
+    <None Include="Docs\Sbi Finance Data.lnk" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
