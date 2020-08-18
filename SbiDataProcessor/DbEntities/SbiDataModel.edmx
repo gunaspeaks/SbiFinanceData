@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SbiDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BuyOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ScriptId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="Rate" Type="float" Nullable="false" />
+          <Property Name="Brokerage" Type="float" />
+          <Property Name="BalanceQty" Type="int" Nullable="false" />
+          <Property Name="OrderNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DigitalContractID" Type="int" />
+        </EntityType>
+        <EntityType Name="DematTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionDate" Type="date" Nullable="false" />
+          <Property Name="VoucherType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Particulars" Type="nvarchar" MaxLength="500" />
+          <Property Name="Debit" Type="float" Nullable="false" />
+          <Property Name="Credit" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DigitalContract">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContractNoteNo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TradedDate" Type="date" Nullable="false" />
+          <Property Name="Brokerage" Type="float" />
+          <Property Name="STT" Type="float" Nullable="false" />
+          <Property Name="ETC" Type="float" Nullable="false" />
+          <Property Name="IGST" Type="float" Nullable="false" />
+          <Property Name="Tax" Type="float" Nullable="false" />
+          <Property Name="DigitalContractNo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IntradayOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DigitalContractId" Type="int" Nullable="false" />
+          <Property Name="ScriptId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="BuyRate" Type="float" Nullable="false" />
+          <Property Name="SellRate" Type="float" Nullable="false" />
+          <Property Name="BuyBrokerage" Type="float" />
+          <Property Name="SellBrokerage" Type="float" />
+        </EntityType>
+        <EntityType Name="ScriptMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ShortName" Type="nchar" MaxLength="5" />
+          <Property Name="IsFandOScript" Type="bit" />
+        </EntityType>
+        <EntityType Name="SellOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuyOrderNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="ScriptId" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Rate" Type="float" />
+          <Property Name="Brokerage" Type="float" />
+          <Property Name="DigitalContractID" Type="int" />
+        </EntityType>
+        <EntityContainer Name="SbiDataModelStoreContainer">
+          <EntitySet Name="BuyOrder" EntityType="Self.BuyOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DematTransaction" EntityType="Self.DematTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DigitalContract" EntityType="Self.DigitalContract" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IntradayOrder" EntityType="Self.IntradayOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScriptMaster" EntityType="Self.ScriptMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SellOrder" EntityType="Self.SellOrder" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SbiDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BuyOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ScriptId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="Rate" Type="Double" Nullable="false" />
+          <Property Name="Brokerage" Type="Double" />
+          <Property Name="BalanceQty" Type="Int32" Nullable="false" />
+          <Property Name="OrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DigitalContractID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DigitalContract">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContractNoteNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TradedDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Brokerage" Type="Double" />
+          <Property Name="STT" Type="Double" Nullable="false" />
+          <Property Name="ETC" Type="Double" Nullable="false" />
+          <Property Name="IGST" Type="Double" Nullable="false" />
+          <Property Name="Tax" Type="Double" Nullable="false" />
+          <Property Name="DigitalContractNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ScriptMaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ShortName" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="IsFandOScript" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="SellOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuyOrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScriptId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Rate" Type="Double" />
+          <Property Name="Brokerage" Type="Double" />
+          <Property Name="DigitalContractID" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="SbiDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BuyOrders" EntityType="Self.BuyOrder" />
+          <EntitySet Name="DigitalContracts" EntityType="Self.DigitalContract" />
+          <EntitySet Name="ScriptMasters" EntityType="Self.ScriptMaster" />
+          <EntitySet Name="SellOrders" EntityType="Self.SellOrder" />
+          <EntitySet Name="IntradayOrders" EntityType="SbiDataModel.IntradayOrder" />
+          <EntitySet Name="DematTransactions" EntityType="SbiDataModel.DematTransaction" />
+        </EntityContainer>
+        <EntityType Name="IntradayOrder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DigitalContractId" Type="Int32" Nullable="false" />
+          <Property Name="ScriptId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="BuyRate" Type="Double" Nullable="false" />
+          <Property Name="SellRate" Type="Double" Nullable="false" />
+          <Property Name="BuyBrokerage" Type="Double" />
+          <Property Name="SellBrokerage" Type="Double" />
+        </EntityType>
+        <EntityType Name="DematTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="VoucherType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Particulars" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Debit" Type="Double" Nullable="false" />
+          <Property Name="Credit" Type="Double" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SbiDataModelStoreContainer" CdmEntityContainer="SbiDataEntities">
+          <EntitySetMapping Name="BuyOrders">
+            <EntityTypeMapping TypeName="SbiDataModel.BuyOrder">
+              <MappingFragment StoreEntitySet="BuyOrder">
+                <ScalarProperty Name="DigitalContractID" ColumnName="DigitalContractID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ScriptId" ColumnName="ScriptId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Brokerage" ColumnName="Brokerage" />
+                <ScalarProperty Name="BalanceQty" ColumnName="BalanceQty" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DigitalContracts">
+            <EntityTypeMapping TypeName="SbiDataModel.DigitalContract">
+              <MappingFragment StoreEntitySet="DigitalContract">
+                <ScalarProperty Name="DigitalContractNo" ColumnName="DigitalContractNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ContractNoteNo" ColumnName="ContractNoteNo" />
+                <ScalarProperty Name="TradedDate" ColumnName="TradedDate" />
+                <ScalarProperty Name="Brokerage" ColumnName="Brokerage" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="ETC" ColumnName="ETC" />
+                <ScalarProperty Name="IGST" ColumnName="IGST" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScriptMasters">
+            <EntityTypeMapping TypeName="SbiDataModel.ScriptMaster">
+              <MappingFragment StoreEntitySet="ScriptMaster">
+                <ScalarProperty Name="IsFandOScript" ColumnName="IsFandOScript" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SellOrders">
+            <EntityTypeMapping TypeName="SbiDataModel.SellOrder">
+              <MappingFragment StoreEntitySet="SellOrder">
+                <ScalarProperty Name="DigitalContractID" ColumnName="DigitalContractID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BuyOrderNo" ColumnName="BuyOrderNo" />
+                <ScalarProperty Name="ScriptId" ColumnName="ScriptId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Brokerage" ColumnName="Brokerage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IntradayOrders">
+            <EntityTypeMapping TypeName="SbiDataModel.IntradayOrder">
+              <MappingFragment StoreEntitySet="IntradayOrder">
+                <ScalarProperty Name="SellBrokerage" ColumnName="SellBrokerage" />
+                <ScalarProperty Name="BuyBrokerage" ColumnName="BuyBrokerage" />
+                <ScalarProperty Name="SellRate" ColumnName="SellRate" />
+                <ScalarProperty Name="BuyRate" ColumnName="BuyRate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ScriptId" ColumnName="ScriptId" />
+                <ScalarProperty Name="DigitalContractId" ColumnName="DigitalContractId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DematTransactions">
+            <EntityTypeMapping TypeName="SbiDataModel.DematTransaction">
+              <MappingFragment StoreEntitySet="DematTransaction">
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+                <ScalarProperty Name="Particulars" ColumnName="Particulars" />
+                <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
