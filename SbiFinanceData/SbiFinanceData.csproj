@@ -87,6 +87,7 @@
     <Compile Include="DematTransactionsForm.Designer.cs">
       <DependentUpon>DematTransactionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\AppCache.cs" />
     <Compile Include="Helpers\MessageHelper.cs" />
     <Compile Include="IntradayForm.cs">
       <SubType>Form</SubType>

@@ -187,7 +187,7 @@ namespace SbiFinanceData
             if (string.IsNullOrWhiteSpace(txtQty.Text)) return;
             double.TryParse(txtBRate.Text, out double rate);
             int.TryParse(txtQty.Text, out int qty);
-            double brokerage = (0.075 / 100) * rate;
+            double brokerage = AppCache.IntradayBuyBrokerage * rate;
             txtBBrokerage.Text = brokerage.ToString("0.00");
         }
 
@@ -197,7 +197,7 @@ namespace SbiFinanceData
             if (string.IsNullOrWhiteSpace(txtQty.Text)) return;
             double.TryParse(txtSRate.Text, out double rate);
             int.TryParse(txtQty.Text, out int qty);
-            double brokerage = (0.075 / 100) * rate;
+            double brokerage = AppCache.IntradaySellBrokerage * rate;
             txtSBrokerage.Text = brokerage.ToString("0.00");
         }
 

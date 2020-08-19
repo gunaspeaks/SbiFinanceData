@@ -181,22 +181,22 @@ namespace SbiFinanceData
 
         private void Qty_TextChanged(object sender, EventArgs e)
         {
-            CalculateSellBrokerage();
+            CalculateBrokerage();
         }
 
-        private void CalculateSellBrokerage()
+        private void CalculateBrokerage()
         {
             if (string.IsNullOrWhiteSpace(txtRate.Text)) return;
             if (string.IsNullOrWhiteSpace(txtQty.Text)) return;
             double.TryParse(txtRate.Text, out double rate);
             int.TryParse(txtQty.Text, out int qty);
-            double brokerage = (0.5 / 100) * rate;
+            double brokerage = AppCache.DeliveryBuyBrokerage * rate;
             txtBrokerage.Text = brokerage.ToString("0.00");
         }
 
         private void Rate_TextChanged(object sender, EventArgs e)
         {
-            CalculateSellBrokerage();
+            CalculateBrokerage();
         }
     }
 }

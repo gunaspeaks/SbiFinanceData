@@ -104,7 +104,7 @@
             this.btnClose.Text = "X";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // lnkScripts
             // 

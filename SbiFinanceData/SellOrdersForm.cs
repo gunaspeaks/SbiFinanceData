@@ -250,28 +250,28 @@ namespace SbiFinanceData
             gvSellOrders.Refresh();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
         private void SoldQty_TextChanged(object sender, EventArgs e)
         {
-            CalculateSellBrokerage();
+            CalculateBrokerage();
         }
 
         private void SoldRate_TextChanged(object sender, EventArgs e)
         {
-            CalculateSellBrokerage();
+            CalculateBrokerage();
         }
 
-        private void CalculateSellBrokerage()
+        private void CalculateBrokerage()
         {
             if (string.IsNullOrWhiteSpace(txtSoldRate.Text)) return;
             if (string.IsNullOrWhiteSpace(txtSoldQty.Text)) return;
             double.TryParse(txtSoldRate.Text, out double rate);
             int.TryParse(txtSoldQty.Text, out int qty);
-            double brokerage = (0.5 / 100) * rate;
+            double brokerage = AppCache.DeliverySellBrokerage * rate;
             txtBrokerage.Text = brokerage.ToString("0.00");
         }
     }

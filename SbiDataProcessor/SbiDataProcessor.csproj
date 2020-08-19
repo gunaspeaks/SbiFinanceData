@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbEntities\AppSetting.cs">
+      <DependentUpon>SbiDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DbEntities\BuyOrder.cs">
       <DependentUpon>SbiDataModel.tt</DependentUpon>
     </Compile>
@@ -90,7 +93,9 @@
     <Compile Include="Processors\ReportsProcessor.cs" />
     <Compile Include="Processors\ScriptsProcessor.cs" />
     <Compile Include="Processors\SellOrderProcessor.cs" />
+    <Compile Include="Processors\UtilitiesProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UiEntities\AppSettingModel.cs" />
     <Compile Include="UiEntities\BuyOrderModel.cs" />
     <Compile Include="UiEntities\CurrentHoldingModel.cs" />
     <Compile Include="UiEntities\DematTransactionModel.cs" />

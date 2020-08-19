@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SbiDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="BuyOrder">
           <Key>
             <PropertyRef Name="Id" />
@@ -78,6 +86,7 @@
           <Property Name="DigitalContractID" Type="int" />
         </EntityType>
         <EntityContainer Name="SbiDataModelStoreContainer">
+          <EntitySet Name="AppSetting" EntityType="Self.AppSetting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BuyOrder" EntityType="Self.BuyOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DematTransaction" EntityType="Self.DematTransaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DigitalContract" EntityType="Self.DigitalContract" Schema="dbo" store:Type="Tables" />
@@ -144,6 +153,7 @@
           <EntitySet Name="SellOrders" EntityType="Self.SellOrder" />
           <EntitySet Name="IntradayOrders" EntityType="SbiDataModel.IntradayOrder" />
           <EntitySet Name="DematTransactions" EntityType="SbiDataModel.DematTransaction" />
+          <EntitySet Name="AppSettings" EntityType="SbiDataModel.AppSetting" />
         </EntityContainer>
         <EntityType Name="IntradayOrder">
           <Key>
@@ -168,6 +178,14 @@
           <Property Name="Particulars" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Debit" Type="Double" Nullable="false" />
           <Property Name="Credit" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AppSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -249,6 +267,15 @@
                 <ScalarProperty Name="Particulars" ColumnName="Particulars" />
                 <ScalarProperty Name="VoucherType" ColumnName="VoucherType" />
                 <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AppSettings">
+            <EntityTypeMapping TypeName="SbiDataModel.AppSetting">
+              <MappingFragment StoreEntitySet="AppSetting">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

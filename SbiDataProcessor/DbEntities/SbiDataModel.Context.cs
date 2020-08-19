@@ -31,5 +31,6 @@ namespace SbiDataProcessor.DbEntities
         public virtual DbSet<SellOrder> SellOrders { get; set; }
         public virtual DbSet<IntradayOrder> IntradayOrders { get; set; }
         public virtual DbSet<DematTransaction> DematTransactions { get; set; }
+        public virtual DbSet<AppSetting> AppSettings { get; set; }
     }
 }
